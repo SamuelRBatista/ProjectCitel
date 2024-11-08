@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SrbWeb.Models.Product>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Registro localizado</h1>
+
+<p>
+    <a asp-action="Create">Cadastrar Novo</a>
+</p>
+<table class="table content-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductEan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductStock)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductEan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Alterar", "Edit", new { ProductId=item.ProductId })
+                @Html.ActionLink("Detalhes", "Details", new { ProductId=item.ProductId })
+                @Html.ActionLink("Deletar", "Delete", new { ProductId=item.ProductId },
+            new { onclick = "return confirm('Deseja realmente deletar este produto ?');" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

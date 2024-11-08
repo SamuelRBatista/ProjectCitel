@@ -1,0 +1,44 @@
+﻿@model SrbWeb.Models.Category
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Cadastrar Categoria</h1>
+
+
+<hr />
+<div class ="form">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-header">
+                    <div class="title">
+                        <h1>Cadastrar</h1>
+                    </div>
+            </div>
+          @*  <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@           
+            <div class="input-box">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="input-box">
+                <label asp-for="CategoryDescription" class="control-label"></label>
+                <input asp-for="CategoryDescription" class="form-control" />
+                <span asp-validation-for="CategoryDescription" class="text-danger"></span>
+            </div>
+            <div class="continue-button">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
